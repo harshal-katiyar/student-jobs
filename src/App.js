@@ -25,7 +25,7 @@ export default function App() {
       <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 4 }}>
         <Container maxWidth="md">
           <Typography variant="h3" component="h1" gutterBottom sx={{ textAlign: 'center', mb: 4 }}>
-            Student Job Tracker
+           🏢 Student Job Tracker
           </Typography>
           <JobForm onAdd={() => setTrigger(!trigger)} />
           <JobList key={trigger} />
