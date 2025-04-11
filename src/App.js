@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container, Typography, Box, createTheme, ThemeProvider } from '@mui/material';
+import JobForm from "./components/JobForm";
+import JobList from "./components/JobList";
+import { useState } from "react";
 
-function App() {
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1976d2',
+    },
+    secondary: {
+      main: '#f50057',
+    },
+    background: {
+      default: '#f5f5f5',
+    }
+  },
+});
+
+export default function App() {
+  const [trigger, setTrigger] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 4 }}>
+        <Container maxWidth="md">
+          <Typography variant="h3" component="h1" gutterBottom sx={{ textAlign: 'center', mb: 4 }}>
+            Student Job Tracker
+          </Typography>
+          <JobForm onAdd={() => setTrigger(!trigger)} />
+          <JobList key={trigger} />
+        </Container>
+      </Box>
+    </ThemeProvider>
   );
 }
-
-export default App;
